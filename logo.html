@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Idea Xcelerator Logo - Dark Background</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #121b26; /* deep dark blue-gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo {
+    position: relative;
+    width: 160px;
+    height: 160px;
+  }
+
+  /* Infinity symbol: two circles with only stroke, no fill */
+  .infinity {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+  }
+  .infinity .loop {
+    position: absolute;
+    top: 0;
+    width: 70px;
+    height: 80px;
+    border: 3.5px solid #8ab4f8; /* soft light blue outline */
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: transparent;
+  }
+  .infinity .loop.left {
+    left: 0;
+    border-right-color: transparent; /* overlapping effect */
+  }
+  .infinity .loop.right {
+    right: 0;
+    border-left-color: transparent;
+  }
+
+  /* X shape: two thin diagonal bars outlined with subtle glow */
+  .x-shape {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+  }
+  .x-shape .bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 140px;
+    border: 3.5px solid #fbbc04; /* bright amber/yellow outline */
+    background: transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+    opacity: 0.9;
+    transform-origin: center;
+    box-shadow: 0 0 12px #fbbc04aa;
+  }
+  .x-shape .bar.first {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .x-shape .bar.second {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+</style>
+</head>
+<body>
+  <div class="logo">
+    <div class="infinity">
+      <div class="loop left"></div>
+      <div class="loop right"></div>
+    </div>
+
+    <div class="x-shape">
+      <div class="bar first"></div>
+      <div class="bar second"></div>
+    </div>
+  </div>
+</body>
+</html>
