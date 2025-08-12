@@ -15,15 +15,13 @@ html, body {
 
 /* HERO SECTION */
 .hero-section {
-  min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* align logo & text top edge */
   justify-content: flex-start;
-  padding: 80px 80px;
+  gap: 20px; /* space between logo and text */
+  padding: 80px 40px;
   position: relative;
-  text-align: left;
 }
-
 .polygon-bg {
   position: absolute;
   top: 0;
@@ -43,24 +41,33 @@ html, body {
 .content {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   max-width: 620px;
+  text-align: left;
 }
 
+
 .logo {
-  height: 100px;
-  margin-bottom: 20px;
+  display: block;
+  max-width: 200px; /* adjust size */
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  margin-left: -38px;
 }
 
 .club-title {
   font-size: 1rem;
   font-weight: 400;
   color: #bbb;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   line-height: 1.4;
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 24px;
@@ -71,7 +78,12 @@ p {
   color: #ccc;
   margin-bottom: 36px;
   line-height: 1.6;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;        /* allows words to break cleanly */
+  max-width: 700px;     /* more room, less word stretching */
 }
+
 
 .buttons {
   display: flex;
