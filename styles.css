@@ -1,3 +1,4 @@
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -16,12 +17,13 @@ html, body {
 /* HERO SECTION */
 .hero-section {
   display: flex;
-  align-items: flex-start; /* align logo & text top edge */
+  align-items: flex-start;
   justify-content: flex-start;
-  gap: 20px; /* space between logo and text */
+  gap: 20px;
   padding: 80px 40px;
   position: relative;
 }
+
 .polygon-bg {
   position: absolute;
   top: 0;
@@ -48,14 +50,25 @@ html, body {
   text-align: left;
 }
 
+/* Logo Container for two logos side by side */
+.logo-container {
+  display: flex;
+  align-items: center; /* perfectly aligns logos vertically */
+  gap: 12px; /* space between logos */
+  margin-bottom: 10px;
+}
 
 .logo {
   display: block;
-  max-width: 200px; /* adjust size */
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  margin-left: -38px;
+  height: 70px; /* fixed height to avoid shifting */
+  width: auto;
+}
+
+.second-logo {
+  display: block;
+  height: 185px; /* smaller height */
+  width: auto;
+  margin-left: -35px;
 }
 
 .club-title {
@@ -80,11 +93,11 @@ p {
   line-height: 1.6;
   text-align: justify;
   text-justify: inter-word;
-  hyphens: auto;        /* allows words to break cleanly */
-  max-width: 700px;     /* more room, less word stretching */
+  hyphens: auto;
+  max-width: 700px;
 }
 
-
+/* Buttons */
 .buttons {
   display: flex;
   gap: 20px;
@@ -120,6 +133,7 @@ p {
   color: #ccc;
 }
 
+/* Explore Menu */
 .explore-menu {
   position: absolute;
   top: 30px;
@@ -142,6 +156,7 @@ p {
   background-color: #ccc;
 }
 
+/* Social Icons */
 .social {
   position: absolute;
   bottom: 30px;
@@ -168,7 +183,7 @@ p {
   color: #ccc;
 }
 
-/* WHO WE ARE SECTION - Fullscreen with geometric background */
+/* WHO WE ARE SECTION */
 .who-we-are {
   position: relative;
   width: 100vw;
@@ -185,7 +200,7 @@ p {
   z-index: 1;
 }
 
-/* Geometric layered background container */
+/* Geometric layered background */
 .geometry-background {
   position: absolute;
   inset: 0;
@@ -194,7 +209,6 @@ p {
   pointer-events: none;
 }
 
-/* Base style for shapes */
 .geom-shape {
   position: absolute;
   background: linear-gradient(135deg, #222, #444);
@@ -207,63 +221,22 @@ p {
   transition: opacity 0.3s ease;
 }
 
-/* Individual shape sizes and positions */
-.shape1 {
-  top: 10%;
-  left: -15%;
-  width: 320px;
-  height: 420px;
-  transform: rotate(-18deg);
-  background: linear-gradient(135deg, #1a1a1a, #333);
-}
+/* Individual shapes */
+.shape1 { top: 10%; left: -15%; width: 320px; height: 420px; transform: rotate(-18deg); background: linear-gradient(135deg, #1a1a1a, #333); }
+.shape2 { top: 25%; right: -20%; width: 280px; height: 350px; transform: rotate(22deg); background: linear-gradient(135deg, #2a2a2a, #444); }
+.shape3 { bottom: 5%; left: 10%; width: 400px; height: 460px; transform: rotate(10deg); background: linear-gradient(135deg, #111, #222); }
+.shape4 { bottom: 20%; right: 5%; width: 350px; height: 390px; transform: rotate(-15deg); background: linear-gradient(135deg, #222, #555); }
+.shape5 { top: 50%; left: 45%; width: 380px; height: 450px; transform: rotate(35deg); background: linear-gradient(135deg, #333, #111); opacity: 0.5; }
 
-.shape2 {
-  top: 25%;
-  right: -20%;
-  width: 280px;
-  height: 350px;
-  transform: rotate(22deg);
-  background: linear-gradient(135deg, #2a2a2a, #444);
-}
-
-.shape3 {
-  bottom: 5%;
-  left: 10%;
-  width: 400px;
-  height: 460px;
-  transform: rotate(10deg);
-  background: linear-gradient(135deg, #111, #222);
-}
-
-.shape4 {
-  bottom: 20%;
-  right: 5%;
-  width: 350px;
-  height: 390px;
-  transform: rotate(-15deg);
-  background: linear-gradient(135deg, #222, #555);
-}
-
-.shape5 {
-  top: 50%;
-  left: 45%;
-  width: 380px;
-  height: 450px;
-  transform: rotate(35deg);
-  background: linear-gradient(135deg, #333, #111);
-  opacity: 0.5;
-}
-
-/* Content card sits above geometry */
+/* Content Card */
 .content-card {
   position: relative;
   max-width: 720px;
   background: rgba(30, 30, 30, 0.85);
   border-radius: 28px;
   padding: 60px 50px 70px;
-  box-shadow:
-    0 0 45px rgba(255, 255, 255, 0.15),
-    inset 0 0 60px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.15),
+              inset 0 0 60px rgba(255, 255, 255, 0.05);
   backdrop-filter: saturate(180%) blur(6px);
   -webkit-backdrop-filter: saturate(180%) blur(6px);
   color: #eee;
@@ -271,7 +244,6 @@ p {
   text-align: center;
 }
 
-/* Text styles */
 .content-card h2 {
   font-size: 3rem;
   margin-bottom: 28px;
@@ -287,7 +259,7 @@ p {
   margin-bottom: 48px;
 }
 
-/* Activities list */
+/* Activities */
 .activities {
   list-style: none;
   padding: 0;
@@ -321,6 +293,19 @@ p {
     flex-direction: column;
     padding: 60px 20px;
     text-align: left;
+  }
+
+  .logo-container {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .logo {
+    height: 80px;
+  }
+
+  .second-logo {
+    height: 60px;
   }
 
   .content {
@@ -359,7 +344,6 @@ p {
     margin-bottom: 20px;
   }
 
-  /* Content card smaller padding and font sizes */
   .content-card {
     padding: 40px 30px 50px;
   }
@@ -381,13 +365,12 @@ p {
     font-size: 0.9rem;
   }
 
-  /* Hide geometric shapes on mobile for clarity */
   .geom-shape {
     display: none;
   }
 }
 
-/* Dropdown styles */
+/* Dropdown */
 .dropdown-content {
   display: none;
   position: absolute;
