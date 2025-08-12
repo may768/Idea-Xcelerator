@@ -61,17 +61,15 @@ html, body {
 
 .logo {
   display: block;
-  height: 7vw;          /* scales with screen width */
-  max-height: 70px;     /* desktop cap */
+  height: clamp(45px, 7vw, 70px); /* min, preferred, max */
   width: auto;
 }
 
 .second-logo {
   display: block;
-  height: calc(7vw * 2.64); /* keeps exact ratio with first logo */
-  max-height: 185px;
+  height: clamp(120px, calc(7vw * 2.64), 185px);
   width: auto;
-  margin-left: -3vw;        /* proportional overlap */
+  margin-left: -34px; /* fixed offset so position doesn’t jump */
 }
 
 .club-title {
@@ -302,8 +300,6 @@ p {
     gap: 8px;
   }
 
-  /* No separate logo sizes — scaling happens automatically */
-  
   .content {
     max-width: 100%;
   }
