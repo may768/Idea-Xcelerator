@@ -1,0 +1,76 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle geometric pattern overlay */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+}
+
+/* Container */
+.events-container {
+  text-align: center;
+  z-index: 1;
+}
+
+/* Heading */
+.events-container h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Poster & Button */
+.event-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.event-slide img {
+  max-height: 75vh;
+  max-width: 85vw;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 3px solid rgba(255,255,255,0.15);
+  box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+}
+
+/* Button */
+.event-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background: white;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.event-link:hover {
+  background: #ccc;
+}
