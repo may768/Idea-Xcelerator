@@ -5,72 +5,145 @@
   box-sizing: border-box;
 }
 
+/* Body */
 body {
-  font-family: 'Manrope', sans-serif;
-  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Subtle geometric pattern overlay */
-body::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(45deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-  z-index: 0;
-}
-
-/* Container */
-.events-container {
-  text-align: center;
-  z-index: 1;
+  font-family: 'Roboto', sans-serif;
+  background-color: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto; /* vertical scroll */
 }
 
 /* Heading */
-.events-container h2 {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+.heading {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 2rem;
+  color: #fff;
 }
 
-/* Poster & Button */
-.event-slide {
+/* Events container - vertical layout */
+.events-container {
+  display: flex;
+  flex-direction: column; /* stack events vertically */
+  gap: 30px;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 50px; /* space at bottom */
+}
+
+/* Event card */
+.event-card {
+  display: flex;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+  transform: scale(1.03);
+}
+
+/* Event image */
+.event-image {
+  flex: 0 0 35%;
+  perspective: 1000px;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid #333;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.event-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Event details */
+.event-details {
+  flex: 1;
+  padding: 25px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  justify-content: center;
 }
 
-.event-slide img {
-  max-height: 75vh;
-  max-width: 85vw;
-  object-fit: contain;
-  border-radius: 12px;
-  border: 3px solid rgba(255,255,255,0.15);
-  box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+.event-details h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #fff;
 }
 
-/* Button */
+.event-details p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+/* Register button */
 .event-link {
-  display: inline-block;
-  padding: 12px 24px;
-  background: white;
-  color: #000;
-  font-weight: bold;
+  padding: 12px 25px;
+  background-color: #333;
+  color: #fff;
   text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
+  border-radius: 6px;
+  font-weight: bold;
+  width: fit-content;
 }
 
 .event-link:hover {
-  background: #ccc;
+  background-color: #555;
+  transition: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .event-card {
+    flex-direction: column;
+  }
+
+  .event-image {
+    width: 100%;
+    height: 250px;
+  }
+
+  .event-details {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .event-card {
+    flex: 0 0 100%;
+  }
+}
+
+/* Modal for click-to-zoom */
+#image-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+#image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  cursor: zoom-out;
 }
