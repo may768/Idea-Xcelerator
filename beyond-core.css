@@ -221,3 +221,41 @@ footer {
   color: #fff;
   cursor: pointer;
 }
+
+/* ===================== MOBILE OPTIMIZATION ===================== */
+@media (max-width: 480px) {
+  /* Hero */
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* Grid spacing */
+  .noncore-grid {
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  /* Card padding and font */
+  .noncore-card {
+    padding: 1rem;
+  }
+  .noncore-card h3 {
+    font-size: 1.1rem;
+  }
+  .noncore-card p {
+    font-size: 0.9rem;
+  }
+
+  /* Modal adjustments */
+  .card-modal-content {
+    padding: 1rem;
+  }
+
+  /* Disable floating dots for performance */
+  body::after {
+    display: none;
+  }
+}
