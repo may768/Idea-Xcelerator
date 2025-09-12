@@ -108,7 +108,7 @@ body::after {
   content: none;
 }
 
-/* Card hover glow: electric blue outside */
+/* Card hover glow: electric blue outside (desktop) */
 .noncore-card:hover {
   transform: translateY(-5px);
   animation: pulseGlow 1.5s infinite alternate;
@@ -224,6 +224,7 @@ footer {
 
 /* ===================== MOBILE OPTIMIZATION ===================== */
 @media (max-width: 480px) {
+
   /* Hero */
   .hero h1 {
     font-size: 2rem;
@@ -252,10 +253,32 @@ footer {
   /* Modal adjustments */
   .card-modal-content {
     padding: 1rem;
+    max-width: 95%;   /* mobile-friendly width */
+    max-height: 95%;  /* mobile-friendly height */
+    transform: scale(1); /* show at full size immediately */
   }
 
-  /* Disable floating dots for performance */
+  /* Remove floating dots for performance */
   body::after {
     display: none;
+  }
+}
+
+/* ===================== MOBILE TAP GLOW EFFECT ===================== */
+@media (max-width: 768px) {
+  .noncore-card.tap-effect {
+    animation: pulseGlowTap 0.6s forwards;
+  }
+
+  @keyframes pulseGlowTap {
+    0% {
+      box-shadow: 0 0 15px #0096ff, 0 0 30px #0096ff, 0 0 45px #0096ff;
+    }
+    50% {
+      box-shadow: 0 0 25px #00ccff, 0 0 50px #00ccff, 0 0 75px #00ccff;
+    }
+    100% {
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
   }
 }
