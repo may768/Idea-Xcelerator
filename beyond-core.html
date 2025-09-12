@@ -51,68 +51,56 @@
     <p>© 2025 Idea Xcelerator</p>
   </footer>
 
- <script>
-const cards = document.querySelectorAll('.noncore-card');
-const modal = document.getElementById('cardModal');
-const modalContent = document.getElementById('modalContent');
-const modalClose = document.getElementById('modalClose');
+  <script>
+    // 3D tilt + shadow
+    const cards = document.querySelectorAll('.noncore-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-cards.forEach(card => {
+        const rotateX = ((y - centerY)/12).toFixed(2);
+        const rotateY = ((x - centerX)/12).toFixed(2);
 
-  // === Desktop: 3D tilt + shadow ===
-  card.addEventListener('mousemove', e => {
-    if(window.innerWidth <= 768) return; // skip on mobile
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+        const distance = Math.sqrt((x-centerX)**2 + (y-centerY)**2);
+        const maxDistance = Math.sqrt(centerX**2 + centerY**2);
+        const scale = 1 + 0.1*(1 - distance/maxDistance);
 
-    const rotateX = ((y - centerY)/12).toFixed(2);
-    const rotateY = ((x - centerX)/12).toFixed(2);
+        const shadowX = -rotateY*2;
+        const shadowY = rotateX*2;
+        const shadowColor = 'rgba(255,255,255,0.15)';
 
-    const distance = Math.sqrt((x-centerX)**2 + (y-centerY)**2);
-    const maxDistance = Math.sqrt(centerX**2 + centerY**2);
-    const scale = 1 + 0.1*(1 - distance/maxDistance);
+        card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+        card.style.boxShadow = `${shadowX}px ${shadowY}px 25px ${shadowColor}`;
+      });
 
-    const shadowX = -rotateY*2;
-    const shadowY = rotateX*2;
-    const shadowColor = 'rgba(255,255,255,0.15)';
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `rotateX(0) rotateY(0) scale(1)`;
+        card.style.boxShadow = `0 0 10px rgba(0,0,0,0.4)`;
+      });
+    });
 
-    card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
-    card.style.boxShadow = `${shadowX}px ${shadowY}px 25px ${shadowColor}`;
-  });
+    // Modal Zoom Functionality
+    const modal = document.getElementById('cardModal');
+    const modalContent = document.getElementById('modalContent');
+    const modalClose = document.getElementById('modalClose');
 
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = `rotateX(0) rotateY(0) scale(1)`;
-    card.style.boxShadow = `0 0 10px rgba(0,0,0,0.4)`;
-  });
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        modalContent.innerHTML = card.innerHTML;
+        modal.classList.add('active');
+      });
+    });
 
-  // === Mobile: tap effect ===
-  card.addEventListener('touchstart', () => {
-    card.classList.add('tap-effect');
-    setTimeout(() => card.classList.remove('tap-effect'), 600);
-  });
-
-  // === Modal functionality ===
-  card.addEventListener('click', () => {
-    // Scroll card into view on mobile
-    if(window.innerWidth <= 768) {
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    modalContent.innerHTML = card.innerHTML;
-    modal.classList.add('active');
-  });
-
-});
-
-// Close modal
-modalClose.addEventListener('click', () => modal.classList.remove('active'));
-modal.addEventListener('click', e => {
-  if(e.target === modal) modal.classList.remove('active');
-});
-</script>
-
+    modalClose.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', e => {
+      if(e.target === modal) modal.classList.remove('active');
+    });
+    
+  </script>
 
 </body>
 </html>
