@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Career Pathways | Consulting & Analytics Club</title>
   <link rel="stylesheet" href="beyond-core.css" />
+  
 </head>
 <body>
+
   <section class="hero">
     <h1>Career-Pathways</h1>
     <p>Explore high-impact roles where chemical engineers thrive — beyond the plant.</p>
@@ -14,45 +16,91 @@
 
   <section class="noncore-grid">
     <div class="noncore-card">
-      <h3>Entrepreneurship & Startups
-</h3>
-      <p>Build your own venture from the ground up — from identifying market gaps to creating scalable, impactful solutions. Gain hands-on experience in business modeling, product development, fundraising, and pitching to investors.
-</p>
+      <h3>Entrepreneurship & Startups</h3>
+      <p>Build your own venture from the ground up — from identifying market gaps to creating scalable, impactful solutions. Gain hands-on experience in business modeling, product development, fundraising, and pitching to investors.</p>
     </div>
     <div class="noncore-card">
-      <h3>Consulting & Strategy
-</h3>
-      <p>Work with organizations to solve high-stakes challenges in operations, market expansion, and sustainability. Learn structured problem-solving, data-driven decision-making, and client communication skills that open doors to global consulting careers.
-
-</p>
+      <h3>Consulting & Strategy</h3>
+      <p>Work with organizations to solve high-stakes challenges in operations, market expansion, and sustainability. Learn structured problem-solving, data-driven decision-making, and client communication skills that open doors to global consulting careers.</p>
     </div>
     <div class="noncore-card">
-      <h3>Sustainability & Green Technologies
-</h3>
-      <p>Pioneer solutions in renewable energy, carbon capture, water treatment, and circular economy models. Combine your engineering expertise with entrepreneurial thinking to create products and processes that address the planet’s most urgent needs.
-</p>
+      <h3>Sustainability & Green Technologies</h3>
+      <p>Pioneer solutions in renewable energy, carbon capture, water treatment, and circular economy models. Combine your engineering expertise with entrepreneurial thinking to create products and processes that address the planet’s most urgent needs.</p>
     </div>
     <div class="noncore-card">
-      <h3>Data & Business Analytics
-</h3>
-      <p>Harness the power of data to optimize processes, predict market trends, and drive innovation. Learn tools like Python, Excel, and AI platforms to turn raw information into actionable business strategies in engineering and beyond.
-</p>
+      <h3>Data & Business Analytics</h3>
+      <p>Harness the power of data to optimize processes, predict market trends, and drive innovation. Learn tools like Python, Excel, and AI platforms to turn raw information into actionable business strategies in engineering and beyond.</p>
     </div>
     <div class="noncore-card">
-      <h3>Process & Product Innovation
-</h3>
-      <p>Lead the development of novel products, advanced materials, and efficient manufacturing systems. Gain exposure to R&D, rapid prototyping, and intellectual property management to stay at the forefront of industrial innovation.
-</p>
+      <h3>Process & Product Innovation</h3>
+      <p>Lead the development of novel products, advanced materials, and efficient manufacturing systems. Gain exposure to R&D, rapid prototyping, and intellectual property management to stay at the forefront of industrial innovation.</p>
     </div>
     <div class="noncore-card">
-      <h3>Investment & Venture Capital in Engineering Sectors
-</h3>
+      <h3>Investment & Venture Capital in Engineering Sectors</h3>
       <p>Explore the world of funding and scaling innovative businesses. Learn how venture capital works, evaluate startup potential, and contribute to the growth of technology-driven companies in chemicals, energy, and sustainability.</p>
     </div>
   </section>
 
+  <!-- Modal for zoom -->
+  <div class="card-modal" id="cardModal">
+    <div class="card-modal-content" id="modalContent"></div>
+    <span class="card-modal-close" id="modalClose">&times;</span>
+  </div>
+
   <footer>
     <p>© 2025 Idea Xcelerator</p>
   </footer>
+
+  <script>
+    // 3D tilt + shadow
+    const cards = document.querySelectorAll('.noncore-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY)/12).toFixed(2);
+        const rotateY = ((x - centerX)/12).toFixed(2);
+
+        const distance = Math.sqrt((x-centerX)**2 + (y-centerY)**2);
+        const maxDistance = Math.sqrt(centerX**2 + centerY**2);
+        const scale = 1 + 0.1*(1 - distance/maxDistance);
+
+        const shadowX = -rotateY*2;
+        const shadowY = rotateX*2;
+        const shadowColor = 'rgba(255,255,255,0.15)';
+
+        card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+        card.style.boxShadow = `${shadowX}px ${shadowY}px 25px ${shadowColor}`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `rotateX(0) rotateY(0) scale(1)`;
+        card.style.boxShadow = `0 0 10px rgba(0,0,0,0.4)`;
+      });
+    });
+
+    // Modal Zoom Functionality
+    const modal = document.getElementById('cardModal');
+    const modalContent = document.getElementById('modalContent');
+    const modalClose = document.getElementById('modalClose');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        modalContent.innerHTML = card.innerHTML;
+        modal.classList.add('active');
+      });
+    });
+
+    modalClose.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', e => {
+      if(e.target === modal) modal.classList.remove('active');
+    });
+    
+  </script>
+
 </body>
 </html>
