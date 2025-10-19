@@ -49,11 +49,76 @@
       max-width: 900px;
       z-index: 1;
       pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     }
     .geometry-right svg { width: 100%; height: 100%; display:block; }
     @media (max-width:900px) {
-      .geometry-right { min-width: 280px; max-width: 420px; }
-      .geometry-right svg { width:100%; height:100%; }
+      .hero-section {
+        flex-direction: column;
+        gap: 0;
+        padding: 36px 4vw 18px 4vw;
+        min-height: 50vh;
+      }
+      .geometry-right {
+        min-width: 240px;
+        max-width: 420px;
+        height: 280px;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        z-index: 1;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+      .geometry-right svg { width:100%; max-width:420px; height:180px; }
+    }
+    @media (max-width:600px) {
+      .hero-section {
+        padding: 26px 5vw 8px 5vw;
+        min-height: 30vh;
+      }
+      .geometry-right {
+        min-width: 160px;
+        max-width: 320px;
+        height: 120px;
+        bottom: -32px;
+        top: auto;
+        left: 0;
+        right: 0;
+        z-index: 1;
+      }
+      .geometry-right svg { width: 100%; max-width: 320px; height: 110px;}
+      .content { max-width: 97vw; }
+      h1 { font-size: 2rem; margin-bottom: 16px;}
+      .logo { height: 38px; }
+      .second-logo { height: 56px; margin-left: -14px;}
+      p { font-size: 1.01rem; margin-bottom: 20px;}
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .buttons a, .explore-btn {
+        font-size: 1rem;
+        padding: 12px 20px;
+        margin-bottom: 0;
+      }
+      .social {
+        position: static;
+        margin-top: 18px;
+        text-align: left;
+        bottom: auto; right: auto;
+      }
+      .dropdown-content {
+        top: 44px;
+        right: auto;
+        left: 0;
+        min-width: 60vw;
+      }
     }
     .content {
       position: relative;
@@ -143,7 +208,6 @@
       color: var(--primary);
       transform: scale(1.04);
     }
-    /* Explore Menu */
     .explore-menu {
       position: absolute;
       top: 30px;
@@ -166,7 +230,6 @@
     .explore-btn:hover {
       background-color: var(--secondary);
     }
-    /* Dropdown */
     .dropdown-content {
       display: none;
       position: absolute;
@@ -199,7 +262,6 @@
     .dropdown-content.show {
       display: block;
     }
-    /* Social Icons */
     .social {
       position: absolute;
       bottom: 30px;
@@ -243,7 +305,6 @@
       text-align: center;
       z-index: 1;
     }
-    /* Geometric layered background */
     .geometry-background {
       position: absolute;
       inset: 0;
@@ -266,7 +327,6 @@
     .shape3 { bottom: 5%; left: 10%; width: 400px; height: 460px; transform: rotate(10deg); background: linear-gradient(135deg, #111, #37c8ff 40%, #222); }
     .shape4 { bottom: 20%; right: 5%; width: 350px; height: 390px; transform: rotate(-15deg); background: linear-gradient(135deg, #222, #15f0ff 70%, #555); }
     .shape5 { top: 50%; left: 45%; width: 380px; height: 450px; transform: rotate(35deg); background: linear-gradient(135deg, #333, #111); opacity: 0.33; }
-    /* Content Card */
     .content-card {
       position: relative;
       max-width: 760px;
@@ -322,30 +382,13 @@
       box-shadow: 0 0 56px var(--primary);
       transform: scale(1.08);
     }
-    @media (max-width:900px) {
-      .hero-section { flex-direction: column; padding: 60px 20px; }
-      .who-we-are, .content-card { padding: 34px 10px; }
-      h1 { font-size: 2.2rem; }
-      .content-card h2 { font-size: 1.5rem; }
-      .activities { gap: 14px;}
-      .activities li { padding: 10px 16px; font-size: 0.96rem;}
-    }
-    @media (max-width:600px) {
-      .logo-container { gap: 4px; }
-      .content { max-width: 96vw;}
-      .buttons { flex-direction: column; align-items: flex-start;}
-      .buttons a, .explore-btn { margin-bottom: 10px; padding: 18px 24px; font-size: 1.16rem;}
-      .social { position: static; margin-top: 26px; text-align: left;}
-      .content-card { padding: 24px 5vw;}
-      .geom-shape { display: none;}
-    }
   </style>
 </head>
 <body>
   <section class="hero-section">
-    <!-- Layered Diamond/Hexagon/Circle Geometry -->
+    <!-- Layered Diamond/Hexagon/Circle Geometry (Mobile responsive) -->
     <div class="geometry-right">
-      <svg viewBox="0 0 700 700" width="700" height="700" style="display:block;">
+      <svg viewBox="0 0 700 700" width="700" height="700">
         <!-- Large rotated square (diamond) -->
         <rect x="170" y="170" width="360" height="360" fill="#222" opacity="0.18" transform="rotate(45 350 350)" />
         <!-- Smaller inner diamond -->
@@ -420,7 +463,6 @@
       </ul>
     </div>
   </section>
-  <!-- Dropdown Toggle Script -->
   <script>
     const exploreBtn = document.querySelector('.explore-btn');
     const dropdown = document.querySelector('.dropdown-content');
