@@ -424,30 +424,24 @@
       .content-card { padding: 24px 5vw; }
       .geom-shape { display: none; }
     }
-   /* MOBILE FIXES FOR GEOMETRIC LANDING */
+    /* --- MOBILE FIXES FOR GEOMETRIC LANDING --- */
 @media (max-width: 900px) {
-  #intro-overlay {
-    align-items: center; /* center vertically */
-    justify-content: center; /* center horizontally */
-    padding: 0;
-  }
-  #intro-overlay .geo1 { width: 140px; height: 140px; top: 5%; left: 10%; }
-  #intro-overlay .geo2 { width: 120px; height: 200px; top: 25%; right: 5%; }
-  #intro-overlay .geo3 { width: 160px; height: 100px; bottom: 5%; left: 20%; }
-  #intro-overlay .geo4 { width: 120px; height: 120px; top: 10%; right: 10%; }
-}
-@media (max-width: 600px) {
-  #intro-overlay {
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-  #intro-overlay .geo1 { width: 100px; height: 100px; top: 5%; left: 5%; }
-  #intro-overlay .geo2 { width: 90px; height: 150px; top: 20%; right: 5%; }
-  #intro-overlay .geo3 { width: 120px; height: 80px; bottom: 5%; left: 10%; }
-  #intro-overlay .geo4 { width: 100px; height: 100px; top: 8%; right: 8%; }
+  #intro-overlay .geo1 { width: 180px; height: 180px; top: 10%; left: 10%; }
+  #intro-overlay .geo2 { width: 140px; height: 230px; top: 35%; right: 10%; }
+  #intro-overlay .geo3 { width: 220px; height: 140px; bottom: 10%; left: 20%; }
+  #intro-overlay .geo4 { width: 180px; height: 180px; top: 5%; right: 15%; }
+
+  #intro-overlay { align-items: flex-start; padding-top: 60px; }
 }
 
+@media (max-width: 600px) {
+  #intro-overlay .geo1 { width: 140px; height: 140px; top: 5%; left: 5%; }
+  #intro-overlay .geo2 { width: 120px; height: 180px; top: 30%; right: 5%; }
+  #intro-overlay .geo3 { width: 180px; height: 120px; bottom: 5%; left: 10%; }
+  #intro-overlay .geo4 { width: 140px; height: 140px; top: 2%; right: 8%; }
+  
+  #intro-overlay { padding-top: 40px; }
+}
   </style>
 </head>
 <body>
